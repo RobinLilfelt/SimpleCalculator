@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#">
+<head>
+  <title>Simple Calculator</title>
+  <script src="assets/vue.min.js"></script>
+  <link rel="stylesheet" href="assets/animate.min.css">
+  <link rel="stylesheet" href="assets/mini-default.min.css">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+  <div class="container" id="app">
+    <!--
+    <div class="row">
+      <div class="col-sm filler">Top
+      </div>
+    </div>
+    -->
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-lg-4"><!-- Left side -->
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4 filler main">
+      <div class="container">
+        <div class="row">
+          <span class="fillwidth" style="font-size: 14pt; text-align: center;">Simple Calculator</span>
+        </div>
+        <div class="row">
+          <!-- <input class="sum fullwidth animated" :class="{fadeIn: fadeIn}" type="text" value="0" id="display" placeholder=""> -->
+          <span class="display">
+            <span class="display-inner animated" :class="{fadeIn: fadeIn}">{{sum}}</span>
+          </span>
+          <span class="formula">{{historyText}}</span>
+        </div>
+        <div class="buttons" @click="calculate($event.target.value)">
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <button class="secondary" value="ac">AC</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="primary" value="÷">÷</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="primary" value="x">x</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="7">7</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="8">8</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="9">9</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="primary" value="-">-</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="4">4</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="5">5</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="6">6</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="primary" value="+">+</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="1">1</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="2">2</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="" value="3">3</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="primary equal-button" value="=">=</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-sm-6">
+              <button class="" value="0">0</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <button class="" value=".">.</button>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <!-- Space reserved for the equal button -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4"><!-- Right side -->
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-sm filler" style="margin-top: 100px;">
+        Created by <a href="http://robinlilfelt.dk/" target="_blank">Robin Lilfelt</a>
+      </div>
+    </div>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
