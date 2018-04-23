@@ -10,6 +10,9 @@ new Vue({
     fadeIn: false
   },
   methods: {
+    numberWithCommas(x) {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
     flash() {
       this.fadeIn = true
       setTimeout(() => {
@@ -26,8 +29,8 @@ new Vue({
     },
     answer() {
       const calText = this.evalText.substr(0, this.evalText.length - 1)
-      this.sum = this.eval(calText)
-      this.evalText = this.sum
+      this.sum = this.numberWithCommas(this.eval(calText))
+      this.evalText = this.eval(calText)
       this.justAnswer = true
       this.historyText = '0'
       this.flash()
@@ -92,20 +95,19 @@ new Vue({
           return
         }
 
-        if (this.sum.length > 8) {
+        if (this.sum.length > 10) {
           this.historyText = exceedText
           this.sum = 0
         }
 
         if (value.match(/\d/g)){
-          this.sum = this.evalText.match(/\d*$/)[0]
+          this.sum = this.numberWithCommas(this.evalText.match(/\d*$/)[0])
         }
 
         const formulaLength = this.evalText.length
         if (value === 'ac') {
           this.clear()
         }
-
 
         if (this.isOperator(value)) {
           const countOperator = this.evalText.match(/[\*\-\+\/]/g).length
@@ -115,15 +117,15 @@ new Vue({
           }
           if (countOperator > 1 && countOperator % 2 == 0) {
             const calText = this.evalText.substr(0, this.evalText.length - 1)
-            this.sum = this.eval(calText)
-            this.evalText = this.sum + value
+            this.sum = this.numberWithCommas(this.eval(calText))
+            this.evalText = this.eval(calText) + value
             this.flash()
           }
         }
         if (value === '=') {
           this.answer()
         }
-        if (this.sum.length > 8) {
+        if (this.sum.length > 10) {
           this.historyText = exceedText
           this.evalText = '0'
           this.sum = 0
